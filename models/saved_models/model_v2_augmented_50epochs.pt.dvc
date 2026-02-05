@@ -1,0 +1,5 @@
+outs:
+- md5: 7df0c18f9ae731a80d61643a5a57d344
+  size: 6251306
+  hash: md5
+  path: model_v2_augmented_50epochs.pt
