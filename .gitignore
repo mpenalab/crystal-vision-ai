@@ -12,6 +12,7 @@ data/processed/
 data/raw/
 models/*.pt
 runs/detect/
+notebooks/
 
 # Pesos base de Ultralytics
 yolov8n.pt
