@@ -202,27 +202,27 @@ dvc push
 
 ## 📸 Detection Results
 
-Here are some examples of defect detection on steel surfaces using our trained YOLOv8 model:
+Our YOLOv8 model successfully identifies and classifies different types of steel surface defects. Below are sample detections with bounding boxes and confidence scores:
 
-### Crazing Detection
-![Crazing defect detection](results/crazing_243.jpg)
+<div align="center">
 
-### Inclusion Detection
-![Inclusion defect detection](results/inclusion_243.jpg)
+| Crazing | Inclusion | Patches |
+|:-------:|:---------:|:-------:|
+| ![Crazing](results/crazing_243.jpg) | ![Inclusion](results/inclusion_243.jpg) | ![Patches](results/patches_243.jpg) |
+| Fine cracks on the surface | Non-metallic particles embedded | Irregular surface texture areas |
 
-### Patches Detection
-![Patches defect detection](results/patches_243.jpg)
+| Pitted Surface | Rolled-in Scale | Scratches |
+|:--------------:|:---------------:|:---------:|
+| ![Pitted Surface](results/pitted_surface_245.jpg) | ![Rolled-in Scale](results/rolled-in_scale_266.jpg) | ![Scratches](results/scratches_259.jpg) |
+| Small cavities or depressions | Scale pressed during rolling | Linear surface damage |
 
-### Pitted Surface Detection
-![Pitted surface defect detection](results/pitted_surface_245.jpg)
+</div>
 
-### Rolled-in Scale Detection
-![Rolled-in scale defect detection](results/rolled-in_scale_266.jpg)
-
-### Scratches Detection
-![Scratches defect detection](results/scratches_259.jpg)
-
-The model successfully identifies and localizes different types of surface defects with bounding boxes and confidence scores, demonstrating its effectiveness for automated quality control.
+**Detection Capabilities:**
+- ✅ Real-time defect localization with bounding boxes
+- ✅ Confidence score prediction for each detection
+- ✅ Multi-class classification across 6 defect types
+- ✅ High precision for automated quality control
 
 ## 🎯 Use Cases
 
