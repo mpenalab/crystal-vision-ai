@@ -199,6 +199,30 @@ git commit -m "Add new dataset"
 dvc push
 ```
 
+## 📸 Detection Results
+
+Here are some examples of defect detection on steel surfaces using our trained YOLOv8 model:
+
+### Crazing Detection
+![Crazing defect detection](runs/detect/predict3/crazing_243.jpg)
+
+### Inclusion Detection
+![Inclusion defect detection](runs/detect/predict3/inclusion_243.jpg)
+
+### Patches Detection
+![Patches defect detection](runs/detect/predict3/patches_243.jpg)
+
+### Pitted Surface Detection
+![Pitted surface defect detection](runs/detect/predict3/pitted_surface_245.jpg)
+
+### Rolled-in Scale Detection
+![Rolled-in scale defect detection](runs/detect/predict3/rolled-in_scale_266.jpg)
+
+### Scratches Detection
+![Scratches defect detection](runs/detect/predict3/scratches_259.jpg)
+
+The model successfully identifies and localizes different types of surface defects with bounding boxes and confidence scores, demonstrating its effectiveness for automated quality control.
+
 ## 🎯 Use Cases
 
 - **Quality Control**: Automated inspection in steel manufacturing
