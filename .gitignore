@@ -1,5 +1,17 @@
+# Entorno y Secretos
+.env
+__pycache__/
+
+# Docker y Logs
 runs/
 mlruns/
-__pycache__/
-.DS_Store
-*.pt
+*.log
+
+# Datos y Pesos (Lo pesado va a DVC)
+data/processed/
+data/raw/
+models/*.pt
+runs/detect/
+
+# Pesos base de Ultralytics
+yolov8n.pt
