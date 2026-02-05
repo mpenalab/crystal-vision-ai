@@ -1,32 +1,33 @@
 import os
-from ultralytics import YOLO
 import glob
+import random
+from ultralytics import YOLO
 
-def run_prediction():
-    # 1. Ruta al mejor modelo entrenado
-    model_path = "runs/detect/steel_model_v1_final/weights/best.pt"
-    
-    if not os.path.exists(model_path):
-        print(f"❌ Error: No se encontró el modelo en {model_path}")
-        return
+def run_prediction_random():
+    # 1. Ruta al modelo v2 (50 epochs)
+    model_path = "models/saved_models/model_v2_augmented_50epochs.pt"
 
-    # 2. Cargar el modelo
+    # 2. Cargar modelo
     model = YOLO(model_path)
 
-    # 3. Seleccionar imágenes de validación (que el modelo no usó para entrenar)
-    # Tomaremos una de cada tipo para ver la variedad
-    test_images = glob.glob("data/processed/validation/images/*.jpg")[:10]
+    # 3. Obtener todas las imágenes de validación
+    all_test_images = glob.glob("data/processed/validation/images/*.jpg")
+    
+    # 4. Mezclar aleatoriamente para ver distintos defectos
+    random.shuffle(all_test_images)
+    test_selection = all_test_images[:15]
 
-    print(f"🧐 Procesando {len(test_images)} imágenes de inspección...")
+    print(f"🎲 Seleccionando 15 imágenes aleatorias para inspección...")
 
-    # 4. Ejecutar predicción
-    # save=True guardará las imágenes con los cuadros dibujados
-    results = model.predict(source=test_images, save=True, conf=0.3, imgsz=640)
+    # 5. Predicción con el umbral óptimo de tu curva F1
+    results = model.predict(
+        source=test_selection, 
+        save=True, 
+        conf=0.25, 
+        imgsz=640
+    )
 
-    # 5. Informar dónde se guardaron
-    # YOLO crea una carpeta 'predict' dentro de 'runs/detect'
-    save_dir = results[0].save_dir
-    print(f"✅ ¡Inspección completada! Resultados guardados en: {save_dir}")
+    print(f"✅ Inspección variada lista en: {results[0].save_dir}")
 
 if __name__ == "__main__":
-    run_prediction()
+    run_prediction_random()

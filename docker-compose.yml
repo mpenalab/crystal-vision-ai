@@ -4,12 +4,9 @@ services:
   app:
     build: .
     container_name: steel_app
+    shm_size: '2gb'
     volumes:
       - .:/app
-      - ./data:/app/data
-    environment:
-      - KAGGLE_API_TOKEN=${KAGGLE_API_TOKEN}
-      - MLFLOW_TRACKING_URI=http://mlflow:5000 # Lo pasamos como variable
     stdin_open: true
     tty: true
     depends_on:
@@ -17,6 +14,18 @@ services:
     networks:
       - cv_network
     command: bash
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - KAGGLE_API_TOKEN=${KAGGLE_API_TOKEN}
+      - MLFLOW_TRACKING_URI=http://mlflow:5000 # Lo pasamos como variable
 
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest
