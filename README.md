@@ -31,7 +31,7 @@ Crystal Vision AI leverages state-of-the-art object detection models to identify
 crystal-vision-ai/
 ├── config/
 │   └── data.yaml                 # Dataset configuration for YOLO
-├── data/
+├── data/                         # (gitignored, managed by DVC)
 │   ├── raw/                      # Raw dataset from Kaggle
 │   ├── processed/                # Preprocessed data (train/val splits)
 │   └── external/                 # Additional data sources
@@ -48,16 +48,18 @@ crystal-vision-ai/
 │       ├── predict.py            # Inference script
 │       └── visualize_results.py  # Results visualization
 ├── models/
-│   └── saved_models/             # Trained model checkpoints
+│   ├── saved_models/             # Trained model checkpoints
+│   └── *.pt                      # (gitignored, YOLO pretrained weights)
 ├── results/                      # Sample detection results
-├── notebooks/                    # Jupyter notebooks for experimentation
-├── mlruns/                       # MLflow tracking data
-├── runs/                         # YOLO training runs
+├── runs/                         # (gitignored, YOLO training outputs)
+│   └── detect/                   # Detection prediction results
 ├── docker-compose.yml            # Docker orchestration
 ├── Dockerfile                    # Container configuration
 ├── requirements.txt              # Python dependencies
 └── README.md                     # This file
 ```
+
+> **Note**: Folders marked as `(gitignored)` are generated during execution or managed by DVC. They won't be in the repository but will be created when running the project.
 
 ## 🚀 Getting Started
 
