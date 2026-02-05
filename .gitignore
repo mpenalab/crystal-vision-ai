@@ -15,3 +15,4 @@ runs/detect/
 
 # Pesos base de Ultralytics
 yolov8n.pt
+yolo26n.pt
