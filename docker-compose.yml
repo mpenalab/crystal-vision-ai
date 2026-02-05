@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: steel_app
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    environment:
+      - KAGGLE_API_TOKEN=${KAGGLE_API_TOKEN}
+      - MLFLOW_TRACKING_URI=http://mlflow:5000 # Lo pasamos como variable
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mlflow
+    networks:
+      - cv_network
+    command: bash
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: steel_mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlruns
+    networks:
+      - cv_network
+    command: >
+      mlflow server 
+      --host 0.0.0.0 
+      --port 5000 
+      --backend-store-uri sqlite:///mlflow.db 
+      --default-artifact-root /mlruns
+
+networks:
+  cv_network:
+    driver: bridge

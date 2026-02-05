@@ -1,0 +1,6 @@
+data/
+mlruns/
+runs/
+venv/
+.git/
+.dvc/

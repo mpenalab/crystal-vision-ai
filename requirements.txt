@@ -1,0 +1,9 @@
+numpy
+torch
+torchvision
+segment-anything-model
+mlflow
+dvc
+matplotlib
+pandas
+opencv-python-headless

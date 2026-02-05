@@ -1,0 +1,13 @@
+# Rutas absolutas dentro del contenedor
+path: /app/data/processed
+train: train/images
+val: validation/images
+
+# Clases (deben estar en el mismo orden que en el script de conversión)
+names:
+  0: crazing
+  1: inclusion
+  2: patches
+  3: pitted_surface
+  4: rolled-in_scale
+  5: scratches
